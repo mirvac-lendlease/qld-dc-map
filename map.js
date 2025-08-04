@@ -1,18 +1,34 @@
-// Wait for page to fully load
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize map centered on Queensland
     const map = L.map('map').setView([-23, 145], 6);
     
-    // Add OpenStreetMap base layer with error handling
+    // Base map (OpenStreetMap)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        attribution: '© OpenStreetMap'
     }).addTo(map);
+
+    // ===== NEW QUEENSLAND DATA LAYERS ===== //
     
-    // Add marker with console confirmation
-    const marker = L.marker([-27.47, 153.02])
+    // 1. Power Infrastructure (sample GeoJSON)
+    fetch('data/qld_power.geojson')
+        .then(response => {
+            if (!response.ok) throw new Error('Failed to load power data');
+            return response.json();
+        })
+        .then(data => {
+            L.geoJSON(data, {
+                style: { color: 'orange', weight: 3 },
+                onEachFeature: (feature, layer) => {
+                    layer.bindPopup(`<b>Power Line</b><br>Voltage: ${feature.properties.voltage || 'Unknown'}`);
+                }
+            }).addTo(map);
+        })
+        .catch(error => console.warn('Power data error:', error));
+
+    // 2. Keep your original Brisbane marker
+    L.marker([-27.47, 153.02])
         .addTo(map)
         .bindPopup("<b>Potential Data Center Site</b><br>Brisbane");
-    
-    console.log("Map initialized successfully!");
+
+    console.log("Map successfully loaded with QLD power data!");
 });
