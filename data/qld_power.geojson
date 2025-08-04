@@ -1,9 +1,58 @@
-// Create a GeoJSON feature dynamically in JavaScript
-const newSite = {
-  type: "Feature",
-  properties: { status: "Proposed" },
-  geometry: {
-    type: "Point",
-    coordinates: [152.5, -26.5]  // Central QLD
-  }
-};
+{
+  "type": "FeatureCollection",
+  "name": "QLD_Power_Infrastructure",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "operator": "Powerlink",
+        "voltage": "275kV",
+        "name": "Brisbane to Gold Coast Transmission"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [153.025, -27.470],  // Brisbane CBD
+          [153.100, -27.600],  // South Brisbane
+          [153.400, -28.000]   // Gold Coast
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "operator": "Energy Queensland",
+        "voltage": "132kV",
+        "name": "Sunshine Coast Backbone"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [152.900, -26.650],  // Nambour
+          [152.950, -26.530],  // Maroochydore
+          [153.100, -26.400]   // Noosa
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "operator": "Powerlink",
+        "voltage": "500kV",
+        "name": "Western Corridor"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [152.810, -27.470],  // Ipswich
+          [151.950, -27.600],  // Toowoomba
+          [150.500, -28.000]   // Dalby
+        ]
+      }
+    }
+  ]
+}
