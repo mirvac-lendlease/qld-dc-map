@@ -1,0 +1,9 @@
+// Create a GeoJSON feature dynamically in JavaScript
+const newSite = {
+  type: "Feature",
+  properties: { status: "Proposed" },
+  geometry: {
+    type: "Point",
+    coordinates: [152.5, -26.5]  // Central QLD
+  }
+};
