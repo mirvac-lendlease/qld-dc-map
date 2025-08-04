@@ -2,19 +2,24 @@
 <html>
 <head>
     <title>QLD Data Center Site Finder</title>
-    <!-- Load Leaflet.js (free mapping library) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
     <style>
         body { margin: 0; padding: 0; }
         #map { height: 100vh; width: 100%; }
     </style>
 </head>
 <body>
-    <!-- Map will appear here -->
     <div id="map"></div>
 
-    <!-- Load Leaflet and our custom JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="map.js"></script>
+    <!-- Load Leaflet from CDN with integrity check -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+    <!-- Load our JS file with proper path -->
+    <script src="./map.js"></script>
 </body>
 </html>
